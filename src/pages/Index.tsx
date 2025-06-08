@@ -75,10 +75,10 @@ const Index = () => {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${stickyVisible ? 'backdrop-blur-xl bg-sparq-black/20 border-b border-white/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo Placeholder */}
+            {/* Logo */}
             <div className="flex items-center">
               <div className="w-8 h-8 bg-gradient-to-r from-sparq-blue to-sparq-neon rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+                <img src="/lovable-uploads/f5ca89a8-1260-42ce-acfe-aeaad364fff0.png" alt="Sparq Logo" className="w-6 h-6 object-contain" />
               </div>
               <span className="ml-2 text-xl font-bold">Sparq</span>
             </div>
@@ -132,12 +132,11 @@ const Index = () => {
         <div className="absolute top-1/3 right-1/4 w-6 h-6 bg-white/5 backdrop-blur-sm border border-white/10 transform rotate-45 animate-bounce"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          {/* Logo Placeholder */}
+          {/* Logo */}
           <div className="mb-8 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl inline-block">
             <div className="w-16 h-16 bg-gradient-to-r from-sparq-blue to-sparq-neon rounded-xl flex items-center justify-center mx-auto mb-2">
-              <span className="text-white font-bold text-xl">LOGO</span>
+              <img src="/lovable-uploads/f5ca89a8-1260-42ce-acfe-aeaad364fff0.png" alt="Sparq Logo" className="w-12 h-12 object-contain" />
             </div>
-            <p className="text-xs text-gray-400">Replace with your logo</p>
           </div>
 
           
