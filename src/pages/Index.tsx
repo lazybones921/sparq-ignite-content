@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -6,14 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import { Scissors, TrendingUp, Palette, Play, Volume2, VolumeX, Zap, Target, Brain, Rocket, Code, Users, Star, ArrowRight, ChevronDown, Menu, X, Package, Crown, Sparkles, Phone } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import SocialFooter from '../components/SocialFooter';
-
 const Index = () => {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [stickyVisible, setStickyVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
-  const [videoStates, setVideoStates] = useState<{ [key: number]: { muted: boolean; playing: boolean } }>({});
-
+  const [videoStates, setVideoStates] = useState<{
+    [key: number]: {
+      muted: boolean;
+      playing: boolean;
+    };
+  }>({});
   useEffect(() => {
     const handleScroll = () => {
       setStickyVisible(window.scrollY > 100);
@@ -21,7 +23,6 @@ const Index = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const toggleVideoSound = (index: number) => {
     setVideoStates(prev => ({
       ...prev,
@@ -31,30 +32,35 @@ const Index = () => {
       }
     }));
   };
-
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'book-call') {
       setShowContactForm(true);
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: 'smooth'
+      });
     }
     setMobileMenuOpen(false);
   };
-
-  const navigationItems = [
-    { name: 'Work', id: 'showreel' },
-    { name: 'Services', id: 'services' },
-    { name: 'Packages', id: 'packages' },
-    { name: 'About', id: 'about' },
-    { name: 'Contact', id: 'book-call' }
-  ];
-
-  return (
-    <div className="min-h-screen bg-sparq-black text-white overflow-x-hidden relative">
+  const navigationItems = [{
+    name: 'Work',
+    id: 'showreel'
+  }, {
+    name: 'Services',
+    id: 'services'
+  }, {
+    name: 'Packages',
+    id: 'packages'
+  }, {
+    name: 'About',
+    id: 'about'
+  }, {
+    name: 'Contact',
+    id: 'book-call'
+  }];
+  return <div className="min-h-screen bg-sparq-black text-white overflow-x-hidden relative">
       {/* Contact Form Modal */}
-      {showContactForm && (
-        <ContactForm onClose={() => setShowContactForm(false)} />
-      )}
+      {showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
 
       {/* Futuristic Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
@@ -79,60 +85,37 @@ const Index = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-8">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
-                >
+              {navigationItems.map(item => <button key={item.id} onClick={() => scrollToSection(item.id)} className="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
                   {item.name}
-                </button>
-              ))}
+                </button>)}
             </nav>
 
             {/* Enhanced CTA Button */}
             <div className="hidden md:block">
-              <Button 
-                onClick={() => scrollToSection('book-call')}
-                className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-sparq-blue/50 animate-pulse-neon"
-              >
+              <Button onClick={() => scrollToSection('book-call')} className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-sparq-blue/50 animate-pulse-neon">
                 <Phone className="w-4 h-4 mr-2" />
                 BOOK A CALL
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
+            <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
           {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-sparq-black/90 backdrop-blur-xl border-b border-white/10">
+          {mobileMenuOpen && <div className="md:hidden absolute top-16 left-0 right-0 bg-sparq-black/90 backdrop-blur-xl border-b border-white/10">
               <div className="px-4 py-6 space-y-4">
-                {navigationItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="block text-gray-300 hover:text-white transition-colors duration-200 font-medium"
-                  >
+                {navigationItems.map(item => <button key={item.id} onClick={() => scrollToSection(item.id)} className="block text-gray-300 hover:text-white transition-colors duration-200 font-medium">
                     {item.name}
-                  </button>
-                ))}
-                <Button 
-                  onClick={() => scrollToSection('book-call')}
-                  className="w-full bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold py-2 rounded-full transition-all duration-300"
-                >
+                  </button>)}
+                <Button onClick={() => scrollToSection('book-call')} className="w-full bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold py-2 rounded-full transition-all duration-300">
                   <Phone className="w-4 h-4 mr-2" />
                   BOOK A CALL
                 </Button>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </header>
 
@@ -167,18 +150,11 @@ const Index = () => {
             We create scroll-stopping edits that drive attention, engagement, and action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-            <Button 
-              onClick={() => scrollToSection('book-call')}
-              className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-8 py-4 text-lg rounded-full shadow-xl hover:shadow-sparq-blue/50 transition-all duration-300 hover:scale-105 animate-pulse-neon"
-            >
+            <Button onClick={() => scrollToSection('book-call')} className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-8 py-4 text-lg rounded-full shadow-xl hover:shadow-sparq-blue/50 transition-all duration-300 hover:scale-105 animate-pulse-neon">
               <Phone className="w-5 h-5 mr-2" />
               BOOK A CALL
             </Button>
-            <Button 
-              onClick={() => scrollToSection('showreel')}
-              variant="outline"
-              className="border-sparq-neon/50 text-sparq-neon hover:bg-sparq-neon/10 backdrop-blur-sm px-8 py-4 text-lg rounded-full transition-all duration-300"
-            >
+            <Button onClick={() => scrollToSection('showreel')} variant="outline" className="border-sparq-neon/50 text-sparq-neon hover:bg-sparq-neon/10 backdrop-blur-sm px-8 py-4 text-lg rounded-full transition-all duration-300">
               VIEW WORK <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
@@ -213,13 +189,7 @@ const Index = () => {
         
         {/* Video Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-            <div 
-              key={index}
-              className="relative group cursor-pointer"
-              onMouseEnter={() => setActiveVideo(index)}
-              onMouseLeave={() => setActiveVideo(null)}
-            >
+          {[1, 2, 3, 4, 5, 6, 7, 8].map(index => <div key={index} className="relative group cursor-pointer" onMouseEnter={() => setActiveVideo(index)} onMouseLeave={() => setActiveVideo(null)}>
               <div className="aspect-[9/16] bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="w-full h-full flex items-center justify-center text-gray-400 relative">
                   <div className="text-center z-10">
@@ -231,16 +201,12 @@ const Index = () => {
                 
                 {/* Video Controls Overlay */}
                 <div className={`absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${activeVideo === index ? 'opacity-100' : 'opacity-0'}`}>
-                  <button
-                    onClick={() => toggleVideoSound(index)}
-                    className="bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20 transition-all duration-200 border border-white/20"
-                  >
+                  <button onClick={() => toggleVideoSound(index)} className="bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20 transition-all duration-200 border border-white/20">
                     {videoStates[index]?.muted ? <VolumeX size={20} className="text-sparq-neon" /> : <Volume2 size={20} className="text-sparq-neon" />}
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </section>
 
@@ -263,37 +229,30 @@ const Index = () => {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {[
-            {
-              icon: Scissors,
-              title: "Reels & TikToks",
-              description: "Scroll-stopping edits"
-            },
-            {
-              icon: Brain,
-              title: "Strategy",
-              description: "Ideas that win attention"
-            },
-            {
-              icon: Palette,
-              title: "On-brand visuals",
-              description: "Styled for you"
-            },
-            {
-              icon: TrendingUp,
-              title: "Growth feedback",
-              description: "What works, why it works"
-            }
-          ].map((service, index) => (
-            <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:border-sparq-neon/30 hover:bg-white/10 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
+          {[{
+          icon: Scissors,
+          title: "Reels & TikToks",
+          description: "Scroll-stopping edits"
+        }, {
+          icon: Brain,
+          title: "Strategy",
+          description: "Ideas that win attention"
+        }, {
+          icon: Palette,
+          title: "On-brand visuals",
+          description: "Styled for you"
+        }, {
+          icon: TrendingUp,
+          title: "Growth feedback",
+          description: "What works, why it works"
+        }].map((service, index) => <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:border-sparq-neon/30 hover:bg-white/10 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5 opacity-50"></div>
               <div className="relative z-10">
                 <service.icon className="w-12 h-12 text-sparq-blue mb-6 group-hover:text-sparq-neon transition-colors duration-300" />
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-slate-50">{service.title}</h3>
                 <p className="text-gray-400">{service.description}</p>
               </div>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </section>
 
@@ -319,64 +278,36 @@ const Index = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            {
-              name: "Starter",
-              icon: Zap,
-              price: "$497",
-              period: "/month",
-              description: "Perfect for getting started",
-              features: [
-                "4 short-form videos",
-                "Basic editing",
-                "Standard turnaround",
-                "Email support"
-              ],
-              popular: false
-            },
-            {
-              name: "Pro",
-              icon: Crown,
-              price: "$997",
-              period: "/month",
-              description: "Our most popular package",
-              features: [
-                "8 short-form videos",
-                "Advanced editing",
-                "Priority turnaround",
-                "Strategy consultation",
-                "Performance insights"
-              ],
-              popular: true
-            },
-            {
-              name: "Scale",
-              icon: Sparkles,
-              price: "$1,997",
-              period: "/month",
-              description: "For serious content creators",
-              features: [
-                "16 short-form videos",
-                "Premium editing",
-                "24h turnaround",
-                "Dedicated manager",
-                "Custom branding",
-                "Growth optimization"
-              ],
-              popular: false
-            }
-          ].map((pkg, index) => (
-            <Card key={index} className={`relative p-8 transition-all duration-300 hover:scale-105 ${pkg.popular 
-              ? 'bg-white/10 backdrop-blur-sm border-sparq-blue/50 ring-2 ring-sparq-blue/30' 
-              : 'bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20'
-            }`}>
-              {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          {[{
+          name: "Starter",
+          icon: Zap,
+          price: "$497",
+          period: "/month",
+          description: "Perfect for getting started",
+          features: ["4 short-form videos", "Basic editing", "Standard turnaround", "Email support"],
+          popular: false
+        }, {
+          name: "Pro",
+          icon: Crown,
+          price: "$997",
+          period: "/month",
+          description: "Our most popular package",
+          features: ["8 short-form videos", "Advanced editing", "Priority turnaround", "Strategy consultation", "Performance insights"],
+          popular: true
+        }, {
+          name: "Scale",
+          icon: Sparkles,
+          price: "$1,997",
+          period: "/month",
+          description: "For serious content creators",
+          features: ["16 short-form videos", "Premium editing", "24h turnaround", "Dedicated manager", "Custom branding", "Growth optimization"],
+          popular: false
+        }].map((pkg, index) => <Card key={index} className={`relative p-8 transition-all duration-300 hover:scale-105 ${pkg.popular ? 'bg-white/10 backdrop-blur-sm border-sparq-blue/50 ring-2 ring-sparq-blue/30' : 'bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20'}`}>
+              {pkg.popular && <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-sparq-blue text-white border-sparq-blue">
                     Most Popular
                   </Badge>
-                </div>
-              )}
+                </div>}
               <div className="text-center mb-8">
                 <pkg.icon className="w-12 h-12 text-sparq-blue mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
@@ -387,24 +318,15 @@ const Index = () => {
                 </div>
               </div>
               <ul className="space-y-3 mb-8">
-                {pkg.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-gray-300">
+                {pkg.features.map((feature, idx) => <li key={idx} className="flex items-center text-gray-300">
                     <div className="w-2 h-2 bg-sparq-blue rounded-full mr-3"></div>
                     {feature}
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-              <Button 
-                onClick={() => scrollToSection('book-call')}
-                className={`w-full ${pkg.popular 
-                  ? 'bg-sparq-blue hover:bg-sparq-blue/80 text-white' 
-                  : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white'
-                } font-medium py-3 rounded-full transition-all duration-300`}
-              >
+              <Button onClick={() => scrollToSection('book-call')} className={`w-full ${pkg.popular ? 'bg-sparq-blue hover:bg-sparq-blue/80 text-white' : 'bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white'} font-medium py-3 rounded-full transition-all duration-300`}>
                 Get Started
               </Button>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </section>
 
@@ -419,11 +341,9 @@ const Index = () => {
           </Badge>
           <h3 className="text-2xl font-bold mb-12 text-gray-400">Brands we've worked with</h3>
           <div className="flex justify-center items-center space-x-12 opacity-60">
-            {['Brand 1', 'Brand 2', 'Brand 3', 'Brand 4', 'Brand 5'].map((brand, index) => (
-              <div key={index} className="text-gray-500 font-bold text-lg hover:text-sparq-blue transition-colors duration-300 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-lg">
+            {['Brand 1', 'Brand 2', 'Brand 3', 'Brand 4', 'Brand 5'].map((brand, index) => <div key={index} className="text-gray-500 font-bold text-lg hover:text-sparq-blue transition-colors duration-300 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-lg">
                 {brand}
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -540,10 +460,7 @@ const Index = () => {
               <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
                 Hit the button below to start a call — no pressure, just possibilities.
               </p>
-              <Button 
-                onClick={() => scrollToSection('book-call')}
-                className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white font-bold px-12 py-4 text-lg rounded-full shadow-xl transition-all duration-300 hover:scale-105"
-              >
+              <Button onClick={() => scrollToSection('book-call')} className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white font-bold px-12 py-4 text-lg rounded-full shadow-xl transition-all duration-300 hover:scale-105">
                 BOOK A CALL
               </Button>
             </div>
@@ -558,8 +475,6 @@ const Index = () => {
       <footer className="py-8 px-4 bg-sparq-black text-center border-t border-white/10">
         <p className="text-gray-500">© 2024 Sparq. All rights reserved.</p>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
