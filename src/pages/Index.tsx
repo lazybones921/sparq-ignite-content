@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -138,7 +139,9 @@ const Index = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden pt-16">
         {/* Background Effects */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M30 30l30-30v60z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5"></div>
+        </div>
         
         {/* Floating geometric shapes */}
         <div className="absolute top-20 left-10 w-8 h-8 border border-sparq-blue/30 rotate-45 animate-pulse"></div>
@@ -283,7 +286,7 @@ const Index = () => {
             }
           ].map((service, index) => (
             <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:border-sparq-neon/30 hover:bg-white/10 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M20 20l20-20v40z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5 opacity-50"></div>
               <div className="relative z-10">
                 <service.icon className="w-12 h-12 text-sparq-blue mb-6 group-hover:text-sparq-neon transition-colors duration-300" />
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -538,6 +541,7 @@ const Index = () => {
                 Hit the button below to start a call — no pressure, just possibilities.
               </p>
               <Button 
+                onClick={() => scrollToSection('book-call')}
                 className="bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 text-white font-bold px-12 py-4 text-lg rounded-full shadow-xl transition-all duration-300 hover:scale-105"
               >
                 BOOK A CALL

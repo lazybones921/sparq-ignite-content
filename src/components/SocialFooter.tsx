@@ -2,12 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Mail, MapPin, Phone, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Mail, MapPin, Phone, Zap } from 'lucide-react';
 
 const SocialFooter = () => {
   return (
     <footer className="py-20 px-4 bg-gradient-to-t from-sparq-gray/30 to-sparq-black relative">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.01\"%3E%3Cpath d=\"M50 50l50-50v100z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Contact Section */}
@@ -60,7 +60,7 @@ const SocialFooter = () => {
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group"
             >
-              <Instagram className="w-6 h-6 text-gray-400 group-hover:text-sparq-blue" />
+              <span className="text-gray-400 group-hover:text-sparq-blue text-lg font-bold">IG</span>
             </a>
             <a
               href="https://twitter.com/sparqcontent"
@@ -68,7 +68,7 @@ const SocialFooter = () => {
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group"
             >
-              <Twitter className="w-6 h-6 text-gray-400 group-hover:text-sparq-neon" />
+              <span className="text-gray-400 group-hover:text-sparq-neon text-lg font-bold">TW</span>
             </a>
             <a
               href="https://linkedin.com/company/sparqcontent"
@@ -76,7 +76,7 @@ const SocialFooter = () => {
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group"
             >
-              <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-sparq-blue" />
+              <span className="text-gray-400 group-hover:text-sparq-blue text-lg font-bold">LI</span>
             </a>
             <a
               href="https://youtube.com/@sparqcontent"
@@ -84,7 +84,7 @@ const SocialFooter = () => {
               rel="noopener noreferrer"
               className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group"
             >
-              <Youtube className="w-6 h-6 text-gray-400 group-hover:text-sparq-neon" />
+              <span className="text-gray-400 group-hover:text-sparq-neon text-lg font-bold">YT</span>
             </a>
           </div>
         </div>
@@ -94,7 +94,7 @@ const SocialFooter = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
               <div className="w-8 h-8 bg-gradient-to-r from-sparq-blue to-sparq-neon rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-sm">S</span>
+                <Zap className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold">Sparq</span>
             </div>
