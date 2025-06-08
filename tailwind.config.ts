@@ -67,11 +67,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Sparq Brand Colors
+				// Sparq Brand Colors - Updated futuristic palette
 				'sparq-blue': '#0027FF',
 				'sparq-black': '#0D0D0D',
 				'sparq-gray': '#1A1A1A',
-				'sparq-neon': '#00FFF7'
+				'sparq-neon': '#00FFF7', // Cyan neon instead of yellow
+				'sparq-purple': '#8B5CF6', // Additional futuristic accent
+				'sparq-dark-blue': '#001B99'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -120,7 +122,31 @@ export default {
 						boxShadow: '0 0 20px rgba(0, 39, 255, 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px rgba(0, 39, 255, 0.6)'
+						boxShadow: '0 0 40px rgba(0, 39, 255, 0.6), 0 0 60px rgba(0, 255, 247, 0.2)'
+					}
+				},
+				'pulse-neon': {
+					'0%, 100%': {
+						boxShadow: '0 0 5px rgba(0, 255, 247, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 20px rgba(0, 255, 247, 0.8), 0 0 30px rgba(0, 39, 255, 0.3)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'spin-slow': {
+					from: {
+						transform: 'rotate(0deg)'
+					},
+					to: {
+						transform: 'rotate(360deg)'
 					}
 				}
 			},
@@ -129,7 +155,14 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'scale-in': 'scale-in 0.4s ease-out',
-				'glow': 'glow 2s ease-in-out infinite'
+				'glow': 'glow 2s ease-in-out infinite',
+				'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'spin-slow': 'spin-slow 10s linear infinite'
+			},
+			backgroundImage: {
+				'futuristic-grid': 'linear-gradient(rgba(0, 39, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 39, 255, 0.1) 1px, transparent 1px)',
+				'cyber-gradient': 'linear-gradient(135deg, #0027FF 0%, #00FFF7 50%, #0027FF 100%)'
 			}
 		}
 	},
