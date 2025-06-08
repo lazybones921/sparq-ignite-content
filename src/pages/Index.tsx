@@ -60,7 +60,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
         {/* Futuristic Grid Background */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Cpath d="M30 30l30-30v60z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        <div className="absolute inset-0 futuristic-grid opacity-20"></div>
         <div className="absolute inset-0 sparq-gradient opacity-10"></div>
         
         {/* Floating geometric shapes */}
@@ -143,7 +143,7 @@ const Index = () => {
                       <span className="text-sm">Video {index}</span>
                     </div>
                     {/* Futuristic overlay pattern */}
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="10" cy="10" r="1"/%3E%3C/g%3E%3C/svg%3E')]"></div>
+                    <div className="absolute inset-0 opacity-50" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E\")" }}></div>
                   </div>
                   
                   {/* Video Controls Overlay */}
@@ -210,7 +210,7 @@ const Index = () => {
               }
             ].map((service, index) => (
               <Card key={index} className={`bg-gradient-to-br ${service.gradient} border-sparq-blue/20 p-8 hover:border-sparq-blue/40 transition-all duration-300 hover:scale-105 group relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Cpath d="M20 20l20-20v40z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+                <div className="absolute inset-0 opacity-50" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M20 20l20-20v40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
                 <div className="relative z-10">
                   <service.icon className="w-12 h-12 text-sparq-blue mb-6 group-hover:text-sparq-neon transition-colors duration-300" />
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -223,7 +223,7 @@ const Index = () => {
 
         {/* Brands Section */}
         <section className="py-16 px-4 bg-gradient-to-r from-sparq-gray/30 via-sparq-black to-sparq-gray/30 relative">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.01"%3E%3Cpath d="M50 50l50-50v100z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.01'%3E%3Cpath d='M50 50l50-50v100z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
           
           <div className="max-w-6xl mx-auto text-center relative z-10">
             <Badge className="bg-sparq-blue/10 text-sparq-blue border-sparq-blue/20 mb-8">
@@ -263,7 +263,7 @@ const Index = () => {
 
           <div className="max-w-4xl mx-auto text-center">
             <Card className="bg-gradient-to-br from-sparq-gray/40 to-sparq-blue/10 border-sparq-blue/20 p-12 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+              <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
               <div className="relative z-10">
                 <blockquote className="text-2xl md:text-3xl font-light mb-8 text-gray-300 italic">
                   "Sparq transformed our content game. We finally stand out."
@@ -322,7 +322,7 @@ const Index = () => {
               <div className="relative">
                 {/* Abstract creative visualization */}
                 <div className="relative w-full h-64 bg-gradient-to-br from-sparq-blue/20 to-sparq-neon/20 rounded-2xl overflow-hidden border border-sparq-blue/20">
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Cpath d="M20 20l20-20v40z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+                  <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20l20-20v40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <Code className="w-16 h-16 text-sparq-blue mx-auto mb-4 animate-pulse" />
@@ -345,11 +345,11 @@ const Index = () => {
         {/* Book a Call Section */}
         <section id="book-call" className="py-20 px-4 relative">
           <div className="absolute inset-0 sparq-gradient opacity-20"></div>
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Cpath d="M50 50l50-50v100z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M50 50l50-50v100z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <Card className="bg-gradient-to-br from-sparq-blue/20 via-sparq-gray/40 to-sparq-neon/20 border-sparq-blue/30 p-12 relative overflow-hidden sparq-glow">
-              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+              <div className="absolute inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
               <div className="relative z-10">
                 <Zap className="w-12 h-12 text-sparq-blue mx-auto mb-6 animate-pulse" />
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-sparq-neon bg-clip-text text-transparent">
