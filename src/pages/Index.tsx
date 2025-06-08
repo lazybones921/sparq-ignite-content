@@ -1,14 +1,16 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Scissors, TrendingUp, Palette, Play, Pause, Volume2, VolumeX, Zap, Target, Brain, Rocket, Code, Users, Star, ArrowRight, ChevronDown, Menu, X, Package, Crown, Sparkles } from 'lucide-react';
+import { Scissors, TrendingUp, Palette, Play, Volume2, VolumeX, Zap, Target, Brain, Rocket, Code, Users, Star, ArrowRight, ChevronDown, Menu, X, Package, Crown, Sparkles, Phone } from 'lucide-react';
+import ContactForm from '../components/ContactForm';
+import SocialFooter from '../components/SocialFooter';
 
 const Index = () => {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
   const [stickyVisible, setStickyVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
   const [videoStates, setVideoStates] = useState<{ [key: number]: { muted: boolean; playing: boolean } }>({});
 
   useEffect(() => {
@@ -30,7 +32,11 @@ const Index = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    if (sectionId === 'book-call') {
+      setShowContactForm(true);
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
     setMobileMenuOpen(false);
   };
 
@@ -44,6 +50,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-sparq-black text-white overflow-x-hidden relative">
+      {/* Contact Form Modal */}
+      {showContactForm && (
+        <ContactForm onClose={() => setShowContactForm(false)} />
+      )}
+
       {/* Futuristic Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-2 h-2 bg-sparq-blue rounded-full animate-ping"></div>
@@ -78,12 +89,13 @@ const Index = () => {
               ))}
             </nav>
 
-            {/* CTA Button */}
+            {/* Enhanced CTA Button */}
             <div className="hidden md:block">
               <Button 
                 onClick={() => scrollToSection('book-call')}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium px-6 py-2 rounded-full transition-all duration-300"
+                className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-sparq-blue/50 animate-pulse-neon"
               >
+                <Phone className="w-4 h-4 mr-2" />
                 BOOK A CALL
               </Button>
             </div>
@@ -112,8 +124,9 @@ const Index = () => {
                 ))}
                 <Button 
                   onClick={() => scrollToSection('book-call')}
-                  className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-medium py-2 rounded-full transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold py-2 rounded-full transition-all duration-300"
                 >
+                  <Phone className="w-4 h-4 mr-2" />
                   BOOK A CALL
                 </Button>
               </div>
@@ -125,9 +138,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden pt-16">
         {/* Background Effects */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="w-full h-full bg-gradient-to-br from-sparq-blue/10 via-transparent to-sparq-neon/10"></div>
-        </div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M30 30l30-30v60z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
         
         {/* Floating geometric shapes */}
         <div className="absolute top-20 left-10 w-8 h-8 border border-sparq-blue/30 rotate-45 animate-pulse"></div>
@@ -155,14 +166,15 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
             <Button 
               onClick={() => scrollToSection('book-call')}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-bold px-8 py-4 text-lg rounded-full shadow-xl transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-sparq-blue to-sparq-neon hover:from-sparq-blue/80 hover:to-sparq-neon/80 text-white font-bold px-8 py-4 text-lg rounded-full shadow-xl hover:shadow-sparq-blue/50 transition-all duration-300 hover:scale-105 animate-pulse-neon"
             >
+              <Phone className="w-5 h-5 mr-2" />
               BOOK A CALL
             </Button>
             <Button 
               onClick={() => scrollToSection('showreel')}
               variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg rounded-full transition-all duration-300"
+              className="border-sparq-neon/50 text-sparq-neon hover:bg-sparq-neon/10 backdrop-blur-sm px-8 py-4 text-lg rounded-full transition-all duration-300"
             >
               VIEW WORK <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -270,8 +282,8 @@ const Index = () => {
               description: "What works, why it works"
             }
           ].map((service, index) => (
-            <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:border-white/20 hover:bg-white/10 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5 opacity-50"></div>
+            <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 p-8 hover:border-sparq-neon/30 hover:bg-white/10 transition-all duration-300 hover:scale-105 group relative overflow-hidden">
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.02\"%3E%3Cpath d=\"M20 20l20-20v40z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
               <div className="relative z-10">
                 <service.icon className="w-12 h-12 text-sparq-blue mb-6 group-hover:text-sparq-neon transition-colors duration-300" />
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -534,6 +546,9 @@ const Index = () => {
           </Card>
         </div>
       </section>
+
+      {/* Social Footer */}
+      <SocialFooter />
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-sparq-black text-center border-t border-white/10">
