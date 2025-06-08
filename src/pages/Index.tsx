@@ -140,9 +140,7 @@ const Index = () => {
             <p className="text-xs text-gray-400">Replace with your logo</p>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight bg-gradient-to-r from-white via-sparq-neon to-sparq-blue bg-clip-text text-transparent animate-fade-in">
-            Sparq
-          </h1>
+          
           <p className="text-xl md:text-2xl text-gray-300 mb-8 font-light animate-fade-in">
             Short-form content that ignites your brand
           </p>
