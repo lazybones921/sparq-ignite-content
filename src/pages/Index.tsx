@@ -310,10 +310,10 @@ const Index = () => {
                 </div>}
               <div className="text-center mb-8">
                 <pkg.icon className="w-12 h-12 text-sparq-blue mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+                <h3 className="text-2xl font-bold mb-2 text-slate-50">{pkg.name}</h3>
                 <p className="text-gray-400 mb-4">{pkg.description}</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold">{pkg.price}</span>
+                  <span className="text-4xl font-bold text-cyan-300">{pkg.price}</span>
                   <span className="text-gray-400">{pkg.period}</span>
                 </div>
               </div>

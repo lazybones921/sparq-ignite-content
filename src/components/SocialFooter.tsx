@@ -1,12 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Mail, MapPin, Phone, Zap } from 'lucide-react';
-
 const SocialFooter = () => {
-  return (
-    <footer className="py-20 px-4 bg-gradient-to-t from-sparq-gray/30 to-sparq-black relative">
+  return <footer className="py-20 px-4 bg-gradient-to-t from-sparq-gray/30 to-sparq-black relative">
       <div className="absolute inset-0 bg-gradient-to-br from-sparq-blue/5 to-sparq-neon/5"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
@@ -33,19 +30,19 @@ const SocialFooter = () => {
           {/* Contact Info */}
           <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
             <Mail className="w-8 h-8 text-sparq-blue mx-auto mb-4" />
-            <h3 className="text-lg font-bold mb-2">Email Us</h3>
+            <h3 className="text-lg font-bold mb-2 text-slate-50">Email Us</h3>
             <p className="text-gray-400">hello@sparqcontent.com</p>
           </Card>
 
           <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
             <Phone className="w-8 h-8 text-sparq-neon mx-auto mb-4" />
-            <h3 className="text-lg font-bold mb-2">Call Us</h3>
+            <h3 className="text-lg font-bold mb-2 text-slate-50">Call Us</h3>
             <p className="text-gray-400">+1 (555) 123-SPARQ</p>
           </Card>
 
           <Card className="bg-white/5 backdrop-blur-sm border-white/10 p-6 text-center">
             <MapPin className="w-8 h-8 text-sparq-blue mx-auto mb-4" />
-            <h3 className="text-lg font-bold mb-2">Location</h3>
+            <h3 className="text-lg font-bold mb-2 text-slate-50">Location</h3>
             <p className="text-gray-400">Los Angeles, CA</p>
           </Card>
         </div>
@@ -54,36 +51,16 @@ const SocialFooter = () => {
         <div className="text-center mb-12">
           <h3 className="text-2xl font-bold mb-6 text-gray-300">Follow Our Work</h3>
           <div className="flex justify-center space-x-6">
-            <a
-              href="https://instagram.com/sparqcontent"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group"
-            >
+            <a href="https://instagram.com/sparqcontent" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group">
               <span className="text-gray-400 group-hover:text-sparq-blue text-lg font-bold">IG</span>
             </a>
-            <a
-              href="https://twitter.com/sparqcontent"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group"
-            >
+            <a href="https://twitter.com/sparqcontent" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group">
               <span className="text-gray-400 group-hover:text-sparq-neon text-lg font-bold">TW</span>
             </a>
-            <a
-              href="https://linkedin.com/company/sparqcontent"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group"
-            >
+            <a href="https://linkedin.com/company/sparqcontent" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-blue/20 hover:border-sparq-blue/30 transition-all duration-300 group">
               <span className="text-gray-400 group-hover:text-sparq-blue text-lg font-bold">LI</span>
             </a>
-            <a
-              href="https://youtube.com/@sparqcontent"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group"
-            >
+            <a href="https://youtube.com/@sparqcontent" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center hover:bg-sparq-neon/20 hover:border-sparq-neon/30 transition-all duration-300 group">
               <span className="text-gray-400 group-hover:text-sparq-neon text-lg font-bold">YT</span>
             </a>
           </div>
@@ -104,8 +81,6 @@ const SocialFooter = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default SocialFooter;
