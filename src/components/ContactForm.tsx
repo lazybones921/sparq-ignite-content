@@ -30,7 +30,7 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
     email: 'entry.1045781291',     // Replace with actual field name from your form
     phone: 'entry.1166974658',     // Replace with actual field name from your form
     company: 'entry.839337160',    // Replace with actual field name from your form
-    message: 'entry.1277115551'    // Replace with actual field name from your form
+    message: 'entry.706368727'    // Replace with actual field name from your form
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
