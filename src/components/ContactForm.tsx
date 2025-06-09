@@ -20,19 +20,17 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
     message: ''
   });
 
-  // You'll need to replace this with your actual Google Form URL
-  // To get this: Create a Google Form -> Send -> Link -> Copy the form URL
-  // Then replace the '/viewform' part with '/formResponse'
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+  // Your Google Form submission URL
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfEi4xmHsQaM1c-07jm_mCGv7C3RhL0FmaMmFoYbMMAc5hveA/formResponse';
   
-  // You'll also need to replace these with your actual Google Form field names
-  // To get these: Inspect your Google Form and look for input names like 'entry.123456789'
+  // Note: You'll need to inspect your Google Form to get the actual field names
+  // For now, using common field name patterns - you may need to update these
   const FORM_FIELDS = {
-    name: 'entry.123456789',      // Replace with actual field name
-    email: 'entry.987654321',     // Replace with actual field name  
-    phone: 'entry.456789123',     // Replace with actual field name
-    company: 'entry.789123456',   // Replace with actual field name
-    message: 'entry.321654987'    // Replace with actual field name
+    name: 'entry.2005620554',      // Replace with actual field name from your form
+    email: 'entry.1045781291',     // Replace with actual field name from your form
+    phone: 'entry.1166974658',     // Replace with actual field name from your form
+    company: 'entry.839337160',    // Replace with actual field name from your form
+    message: 'entry.1277115551'    // Replace with actual field name from your form
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
