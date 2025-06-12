@@ -20,7 +20,7 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
   });
 
   // Your Google Form submission URL
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfEi4xmHsQaM1c-07jm_mCGv7C3RhL0FmaMmFoYbMMAc5hveA/viewform?usp=dialog';
+  const GOOGLE_FORM_URL = 'https://forms.gle/yPa8NoXfiraKGAqz6';
   
   const FORM_FIELDS = {
     name: 'entry.2005620554',
