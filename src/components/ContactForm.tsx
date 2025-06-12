@@ -23,14 +23,12 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
   // Your Google Form submission URL
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfEi4xmHsQaM1c-07jm_mCGv7C3RhL0FmaMmFoYbMMAc5hveA/formResponse';
   
-  // Note: You'll need to inspect your Google Form to get the actual field names
-  // For now, using common field name patterns - you may need to update these
   const FORM_FIELDS = {
-    name: 'entry.2005620554',      // Replace with actual field name from your form
-    email: 'entry.1045781291',     // Replace with actual field name from your form
-    phone: 'entry.1166974658',     // Replace with actual field name from your form
-    company: 'entry.839337160',    // Replace with actual field name from your form
-    message: 'entry.706368727'    // Replace with actual field name from your form
+    name: 'entry.2005620554',
+    email: 'entry.1045781291',
+    phone: 'entry.1166974658',
+    company: 'entry.839337160',
+    message: 'entry.706368727'
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,20 +36,43 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
     setIsSubmitting(true);
 
     try {
-      // Create form data for Google Forms submission
-      const formDataToSend = new FormData();
-      formDataToSend.append(FORM_FIELDS.name, formData.name);
-      formDataToSend.append(FORM_FIELDS.email, formData.email);
-      formDataToSend.append(FORM_FIELDS.phone, formData.phone);
-      formDataToSend.append(FORM_FIELDS.company, formData.company);
-      formDataToSend.append(FORM_FIELDS.message, formData.message);
+      // Create a hidden iframe for submission
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.name = 'hidden_iframe';
+      document.body.appendChild(iframe);
 
-      // Submit to Google Forms
-      await fetch(GOOGLE_FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors', // Required for Google Forms
-        body: formDataToSend
+      // Create a form element
+      const form = document.createElement('form');
+      form.target = 'hidden_iframe';
+      form.method = 'POST';
+      form.action = GOOGLE_FORM_URL;
+
+      // Add form fields
+      const fields = [
+        { name: FORM_FIELDS.name, value: formData.name },
+        { name: FORM_FIELDS.email, value: formData.email },
+        { name: FORM_FIELDS.phone, value: formData.phone },
+        { name: FORM_FIELDS.company, value: formData.company },
+        { name: FORM_FIELDS.message, value: formData.message }
+      ];
+
+      fields.forEach(field => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = field.name;
+        input.value = field.value;
+        form.appendChild(input);
       });
+
+      document.body.appendChild(form);
+      form.submit();
+
+      // Clean up
+      setTimeout(() => {
+        document.body.removeChild(form);
+        document.body.removeChild(iframe);
+      }, 1000);
 
       toast({
         title: "Message Sent!",
