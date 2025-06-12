@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -35,44 +34,32 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    console.log('Form submission started');
+    console.log('Form data:', formData);
+    console.log('Google Form URL:', GOOGLE_FORM_URL);
+    console.log('Form fields mapping:', FORM_FIELDS);
+
     try {
-      // Create a hidden iframe for submission
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.name = 'hidden_iframe';
-      document.body.appendChild(iframe);
+      // Method 1: Try with URLSearchParams and fetch
+      const formDataToSend = new URLSearchParams();
+      formDataToSend.append(FORM_FIELDS.name, formData.name);
+      formDataToSend.append(FORM_FIELDS.email, formData.email);
+      formDataToSend.append(FORM_FIELDS.phone, formData.phone);
+      formDataToSend.append(FORM_FIELDS.company, formData.company);
+      formDataToSend.append(FORM_FIELDS.message, formData.message);
 
-      // Create a form element
-      const form = document.createElement('form');
-      form.target = 'hidden_iframe';
-      form.method = 'POST';
-      form.action = GOOGLE_FORM_URL;
+      console.log('Sending data:', formDataToSend.toString());
 
-      // Add form fields
-      const fields = [
-        { name: FORM_FIELDS.name, value: formData.name },
-        { name: FORM_FIELDS.email, value: formData.email },
-        { name: FORM_FIELDS.phone, value: formData.phone },
-        { name: FORM_FIELDS.company, value: formData.company },
-        { name: FORM_FIELDS.message, value: formData.message }
-      ];
-
-      fields.forEach(field => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = field.name;
-        input.value = field.value;
-        form.appendChild(input);
+      const response = await fetch(GOOGLE_FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formDataToSend
       });
 
-      document.body.appendChild(form);
-      form.submit();
-
-      // Clean up
-      setTimeout(() => {
-        document.body.removeChild(form);
-        document.body.removeChild(iframe);
-      }, 1000);
+      console.log('Response received (no-cors mode, limited info available)');
 
       toast({
         title: "Message Sent!",
@@ -90,11 +77,79 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
       onClose();
     } catch (error) {
       console.error('Error submitting form:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
+      
+      // Try fallback method with hidden iframe
+      console.log('Trying fallback method with iframe...');
+      try {
+        // Create a hidden iframe for submission
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.name = 'hidden_iframe';
+        iframe.onload = () => {
+          console.log('Iframe loaded - form likely submitted successfully');
+          toast({
+            title: "Message Sent!",
+            description: "Thank you for your message. We'll get back to you within 24 hours.",
+          });
+          
+          // Reset form and close
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            message: ''
+          });
+          onClose();
+        };
+        document.body.appendChild(iframe);
+
+        // Create a form element
+        const form = document.createElement('form');
+        form.target = 'hidden_iframe';
+        form.method = 'POST';
+        form.action = GOOGLE_FORM_URL;
+
+        // Add form fields
+        const fields = [
+          { name: FORM_FIELDS.name, value: formData.name },
+          { name: FORM_FIELDS.email, value: formData.email },
+          { name: FORM_FIELDS.phone, value: formData.phone },
+          { name: FORM_FIELDS.company, value: formData.company },
+          { name: FORM_FIELDS.message, value: formData.message }
+        ];
+
+        fields.forEach(field => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = field.name;
+          input.value = field.value;
+          form.appendChild(input);
+          console.log(`Added field: ${field.name} = ${field.value}`);
+        });
+
+        document.body.appendChild(form);
+        console.log('Submitting form via iframe method...');
+        form.submit();
+
+        // Clean up after a delay
+        setTimeout(() => {
+          if (document.body.contains(form)) {
+            document.body.removeChild(form);
+          }
+          if (document.body.contains(iframe)) {
+            document.body.removeChild(iframe);
+          }
+        }, 5000);
+
+      } catch (fallbackError) {
+        console.error('Fallback method also failed:', fallbackError);
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again or contact us directly.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
