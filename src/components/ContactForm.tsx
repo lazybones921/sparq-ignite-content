@@ -20,7 +20,7 @@ const ContactForm = ({ onClose }: ContactFormProps) => {
   });
 
   // Your Google Form submission URL
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/1qZ4vGrkHeF-SVBKLVI-j4KEmoJotDY7L1ReEuRLcvKo/viewform?edit_requested=true&edit2=2_ABaOnucVuD-GrpIksNZCGj7YE9yGU7DPtFuf8CWYjDIWNiQ55QcchWXcgFRBnoH3lQ';
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfEi4xmHsQaM1c-07jm_mCGv7C3RhL0FmaMmFoYbMMAc5hveA/viewform?usp=dialog';
   
   const FORM_FIELDS = {
     name: 'entry.2005620554',
